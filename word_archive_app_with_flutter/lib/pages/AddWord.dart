@@ -41,6 +41,15 @@ class _AddWordState extends State<AddWord> {
   }
 
   @override
+  void dispose() {
+    _englishController.dispose();
+    _turkishController.dispose();
+    _storyController.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // ViewModel
     final vm = context.read<WordViewModel>();
@@ -140,11 +149,16 @@ class _AddWordState extends State<AddWord> {
                     border: Border.all(color: Colors.grey, width: 3),
                   ),
                   child: _imageBytes == null
-                      ? Center(child: Text('Select the Photo'.toUpperCase(), style: Theme.of(context).textTheme.bodyLarge,))
+                      ? Center(
+                          child: Text(
+                            'Select the Photo'.toUpperCase(),
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        )
                       : Image.memory(_imageBytes!, fit: BoxFit.cover),
                 ),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 10),
               ElevatedButton.icon(
                 onPressed: () async {
                   await vm.addWord(
@@ -161,7 +175,6 @@ class _AddWordState extends State<AddWord> {
                       content: Text("The word was defined."),
                       duration: Duration(seconds: 2),
                     ),
-
                   );
 
                   // alanları temizle
