@@ -52,7 +52,7 @@ class _WordsState extends State<Words> {
               final word = words[index];
 
               return Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.026),
                 child: Card(
                   margin: const EdgeInsets.symmetric(
                     horizontal: 8,
@@ -99,7 +99,7 @@ class _WordsState extends State<Words> {
                             );
                           },
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: MediaQuery.of(context).size.width * 0.026),
                         IconButton(
                           icon: Icon(
                             word.isLearned

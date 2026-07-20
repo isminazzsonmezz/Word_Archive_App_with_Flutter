@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
             itemBuilder: (context, index) {
               final word = favoriteWords[index];
               return Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.26),
                 child: Card(
                   margin: const EdgeInsets.symmetric(
                     horizontal: 8,

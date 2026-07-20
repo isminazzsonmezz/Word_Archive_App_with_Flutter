@@ -21,7 +21,7 @@ class _SettingState extends State<Setting> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 15),
+            SizedBox(height: MediaQuery.of(context).size.width * 0.04),
             SwitchListTile(
               title: const Text("Dark Mode"),
               subtitle: const Text("Application mode"),
@@ -30,7 +30,7 @@ class _SettingState extends State<Setting> {
                 context.read<ThemeController>().toggleTheme();
               },
             ),
-            SizedBox(height: 15),
+            SizedBox(height: MediaQuery.of(context).size.width * 0.04),
             SwitchListTile(
               title: const Text("Show Search History"),
               value: false,

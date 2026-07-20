@@ -23,39 +23,38 @@ class AppLightTheme {
         titleLarge: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.bold,
-          color: Colors.white
+          color: Colors.white,
         ),
         titleMedium: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Colors.white
+          color: Colors.white,
         ),
         titleSmall: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: Colors.black
+          color: Colors.black,
         ),
         bodyLarge: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.normal,
-          color: Colors.black
+          color: Colors.black,
         ),
         bodyMedium: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.normal,
-          color: Colors.black
+          color: Colors.black,
         ),
         bodySmall: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.normal,
-          color: Colors.black
+          color: Colors.black,
         ),
         labelMedium: TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.normal,
-          color: Colors.black
-        )
-
+          color: Colors.black,
+        ),
       ),
 
       snackBarTheme: SnackBarThemeData(
@@ -68,11 +67,9 @@ class AppLightTheme {
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(
-          color: AppColors.darkIcon,
-        ),
+        iconTheme: IconThemeData(color: AppColors.darkIcon),
       ),
-      
+
       tabBarTheme: TabBarThemeData(
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white,

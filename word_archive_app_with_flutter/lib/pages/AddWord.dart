@@ -56,7 +56,7 @@ class _AddWordState extends State<AddWord> {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.04),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -65,7 +65,7 @@ class _AddWordState extends State<AddWord> {
                 "Add new word",
                 style: Theme.of(context).textTheme.titleSmall,
               ),
-              SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.width * 0.04),
               TextFormField(
                 controller: _englishController,
                 autovalidateMode: AutovalidateMode.onUnfocus,
@@ -83,7 +83,7 @@ class _AddWordState extends State<AddWord> {
                   hintText: "Please Enter the Word",
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.width * 0.04),
               TextFormField(
                 controller: _turkishController,
                 autovalidateMode: AutovalidateMode.onUnfocus,
@@ -101,7 +101,7 @@ class _AddWordState extends State<AddWord> {
                   hintText: "Please Enter the Word",
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.width * 0.04),
               TextFormField(
                 controller: _storyController,
                 onSaved: (newValue) {},
@@ -113,7 +113,7 @@ class _AddWordState extends State<AddWord> {
                   hintText: "Please Enter Story about the Word",
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: MediaQuery.of(context).size.width * 0.04),
               DropdownButtonFormField<WordType>(
                 decoration: const InputDecoration(
                   labelText: 'Select the Type', // (isimlendirme aşağıda)
@@ -161,6 +161,20 @@ class _AddWordState extends State<AddWord> {
               SizedBox(height: 10),
               ElevatedButton.icon(
                 onPressed: () async {
+                  if (_englishController.text.trim().isEmpty ||
+                      _turkishController.text.trim().isEmpty) {
+                    // Alanlardan en az biri boş
+                    // mesaj
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          "Please enter both English and Turkish words.",
+                        ),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                    return;
+                  }
                   await vm.addWord(
                     english: _englishController.text,
                     turkish: _turkishController.text,
@@ -181,6 +195,9 @@ class _AddWordState extends State<AddWord> {
                   _englishController.clear();
                   _turkishController.clear();
                   _storyController.clear();
+
+                  _imageBytes = null;
+                  _selectedType = null;
                 },
                 label: Text('Save'),
                 icon: Icon(FontAwesomeIcons.floppyDisk),
